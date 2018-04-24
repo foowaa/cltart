@@ -41,3 +41,13 @@ The author is cltian (email: tianchunlin123@gmail.com).
 =============
 1. 如需以git方式获取，git clone https://github.com/foowaa/cltart
 2. 如需直接获取压缩包文件，请下载 https://github.com/foowaa/cltart/archive/master.zip
+
+资源
+=============
+[1] [wiki book](https://en.wikibooks.org/wiki/LaTeX)
+
+[2] [The Not So Short Introduction To LaTeX (Chinese Edition)](https://github.com/CTeX-org/lshort-cn)
+
+[3] [ctex文档](http://mirrors.ibiblio.org/CTAN/language/chinese/ctex/ctex.pdf)
+
+[4] [LaTex-Project](https://www.latex-project.org/)
