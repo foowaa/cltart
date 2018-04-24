@@ -10,7 +10,7 @@ make it easy to write and good to look.
 
 版权须知
 ========
-**cltart** obeys MIT License. Free to use!!
+**cltart** obeys MIT License. Feel free to use!!
 
 The author is cltian (email: tianchunlin123@gmail.com).
 
