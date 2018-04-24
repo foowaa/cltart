@@ -1,0 +1,158 @@
+\documentclass[super,list,bibieee,myhdrone,table,math]{cltart}
+\begin{document}
+\cltheading{cltart使用说明by\ cltian}
+\clttitle{cltart使用说明}
+\cltinfo{cltian——tianchunlin123@gmail.com}
+\section{cltart文档类简介}
+\par ``cltart''是为CTEX的article类定制的一个文档类，用于简化常见中文文档书写。使用很简单：
+\begin{verbatim}
+\documentclass[arg1, arg2, ..., argN]{cltart}
+\end{verbatim}
+\par 具体的页面配置如下：
+\begin{itemize}
+  \item 使用A4页面，行间距1.5倍，段前段后0磅，section段前24磅、段后6磅，subsection段前12磅、段后6磅，subsection段前12磅、段后6磅
+  \item 标题三号加黑黑体字，信息五号加黑黑体字
+  \item 正文中文使用宋体小四，英文使用Times New Roman小四
+  \item 页眉页脚使用五号字
+  \item caption段前6磅，段后0磅，使用五号字
+  \item 参考文献提供GBT-7714和IEEE Trans格式，有中文建议使用GBT-7714格式。文档使用五号字，1.5倍行距
+  \item 对浮动体进行设置，使之排版更紧密
+\end{itemize}
+\section{内置命令}
+\par 关于文档开头的命令。cltart摒弃了LaTex内置的生成标题、作者、日期等的命令。自建命令完成这些功能，这些命令可写可不写，不写则无此信息。其中，\verb|\clttitle{}|命令和\verb|\cltinfo{}|命令请注意先后顺序。
+\begin{itemize}
+  \item \verb|\clttitle{}|命令，用在开头，生成标题。如果不写则无标题。
+  \item \verb|\cltinfo{}|命令，用在开头，生成相关信息（如作者，联系方式，日期等）。如果不写则无信息。
+  \item \verb|\cltheading{}|命令，用在开头，如传入myhdrone, myhdrtwo，则必须设置，其为页眉信息。请参看节-\ref{sec3}。
+\end{itemize}
+\par 如本文开头是这样写的：
+\begin{verbatim}
+\documentclass[super,list,bibieee,myhdrone,color,tikz,table,math]{cltart}
+\begin{document}
+\cltheading{cltart使用说明by\ cltian}
+\clttitle{cltart使用说明}
+\cltinfo{cltian——tianchunlin123@gmail.com}
+...
+...
+\end{document}
+\end{verbatim}
+\par 便捷的空格、换行、换页命令：
+\begin{itemize}
+  \item \verb|\smallblank{}|，可传入参数N，会生成N个1/3em的空格。
+  \item \verb|\bigblank{}|，可传入参数N，会生成N个1em的空格。
+  \item \verb|\nextline{}|，可传入参数N，会生换行N次。
+  \item \verb|\blankpage{}|，可传入参数N，另起一页，并生成N个空白页。
+  \item \verb|\nextpage|，无参数，另起一页。
+\end{itemize}
+\section{参考文献选项}
+\par 如果要使用参考文献，请\textbf{务必}传入参数<numbers|super|authoryar>，如要使用IEEE Trans参考文献格式，使用参数bibieee，否则默认使用GBT-7714。传递参数方法如下，之后不再赘述。
+\begin{verbatim}
+\documentclass[super,bibieee]{cltart}
+\end{verbatim}
+\subsection{引用格式}\label{1.1}
+\begin{itemize}
+  \item numbers：[1]
+  \item super：上标 [1]
+  \item authoryear：(Jones, 1995)
+\end{itemize}
+\par 引用使用\verb|\cite{}|，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\verb|\citens{}|，\citens{tian2017deep,yuan2018auxiliary}
+\subsection{参考文献格式}
+\par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
+\section{页眉页脚}\label{sec3}
+我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
+\begin{itemize}
+  \item myhdrone——必须设置\verb|\cltheading{}|，页眉左侧为\verb|\cltheading{}|的内容，右侧为页码。
+  \item myhdrtwo——必须设置\verb|\cltheading{}|，页眉居中为\verb|\cltheading{}|的内容，页脚居中为页码。
+  \item myhdrthree——页眉左侧为章节号和章节标题，右侧为页码。
+  \item myhdrfour——页眉居中为章节号和章节标题，页脚居中为页码。
+  \item myhdrfive——页眉页脚为空。
+  \item 默认——页眉为空，页脚居中为页码。
+\end{itemize}
+\section{杂项}
+\par \textbf{list}。引入verbatim，listing，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim模式，源代码和伪代码。源代码如下：
+\begin{lstlisting}[language=c++]
+typedef struct ImageData {
+  ImageData() {
+    data = nullptr;
+    width = 0;
+    height = 0;
+    num_channels = 0;
+  }
+
+  ImageData(int32_t img_width, int32_t img_height,
+    int32_t img_num_channels = 1) {
+    data = nullptr;
+    width = img_width;
+    height = img_height;
+    num_channels = img_num_channels;
+  }
+
+  uint8_t* data;
+  int32_t width;
+  int32_t height;
+  int32_t num_channels;
+} ImageData;
+
+typedef struct Rect {
+  int32_t x;
+  int32_t y;
+  int32_t width;
+  int32_t height;
+} Rect;
+
+typedef struct FaceInfo {
+  seeta::Rect bbox;
+  double roll;
+  double pitch;
+  double yaw;
+  double score;
+} FaceInfo;
+
+  typedef struct {
+    double x;
+    double y;
+  } FacialLandmark;
+}
+\end{lstlisting}
+\par \textbf{math}。引入了amsmath，mathtools，amsfonts，方便高级数学公式书写。例如：
+\nextline{1}
+
+Pascal’s rule is
+\[
+\binom{n}{k} =\binom{n-1}{k}
++ \binom{n-1}{k-1}
+\]
+
+\par \textbf{color}。引入了xcolor包。具体使用参见\url{https://en.wikibooks.org/wiki/LaTeX/Colors}，其相当于：
+\begin{verbatim}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\end{verbatim}
+
+\par \textbf{table}。引入了ctable，longtable，multirow包，方便进行复杂表格设计。例子如表-\ref{table1}。
+
+\ctable[cap = {TABLE CAPTION},caption = {例子}, label={table1}]{cc}
+{
+  % You specify table footnotes here.
+  \tnote[$\ast$]{DA FOOTNOTE 1}
+  \tnote[$\dagger$]{dat other footnote}
+  \tnote[b]{mistakes are possible (you must match these up yourself)}
+}{
+\FL % FLORIDA (just kidding, means "first line")
+COL 1\tmark[a] & COL 2\tmark[$\ast$]
+\ML % middle line
+6.920e+00\tmark[$\dagger$]     &   0.09781\\
+97     &   2000
+\LL % last line
+}
+
+\par \textbf{nohref}。如传入nohref参数，则不使用超链接。默认使用。
+
+\par \textbf{geometry}。引入geomrtry包调整页面。
+
+\par \textbf{tikz}。引入tikz包绘图。
+
+\par \textbf{syntaxonly}。引入syntonly包，进行语法检查且不生成pdf文件（往往这样会生成文件更快），此选项比较适合于确认文档有无语法错误。
+
+\par \textbf{图片}。默认导入graphicx，subcaption，bicaption包，并进行了图片样式的调整。详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}。
+\bibliography{bib/ref}
+\end{document}
