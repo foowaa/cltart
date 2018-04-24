@@ -1,17 +1,18 @@
 \documentclass[super,list,bibieee,myhdrone,table,math]{cltart}
+%\nofake
 \begin{document}
 \cltheading{cltart使用说明by\ cltian }
 \clttitle{cltart使用说明}
-\cltinfo{cltian\footnote{cltian个人主页：\href{http://www.cltian.site}\href{http://github.com/foowaa}}——tianchunlin123@gmail.com}
+\cltinfo{cltian\footnote{cltian个人主页：\url{http://github.com/foowaa/documentation}}——tianchunlin123@gmail.com}
 \section{cltart文档类简介}
-\par ``cltart''是为CTEX的article类定制的一个文档类，用于简化常见中文文档书写。使用很简单：
+\par ``cltart''是为CTEX的article类定制的一个文档类，\emph{用于简化常见中文文档书写}。使用很简单：
 \begin{verbatim}
 \documentclass[arg1, arg2, ..., argN]{cltart}
 \end{verbatim}
 \par 具体的页面配置如下：
 \begin{itemize}
   \item 使用A4页面，行间距1.5倍，段前段后0磅，section段前24磅、段后6磅，subsection段前12磅、段后6磅，subsection段前12磅、段后6磅
-  \item 标题三号加黑黑体字，信息五号加黑黑体字
+  \item 标题三号加黑加粗，信息五号黑体加粗\footnote{如出现字体无法找到的现象，请在cltart中搜索font，看其中设置的字体是否在系统中存在。中文字体问题请参看《CTeX 宏集手册》。}
   \item 正文中文使用宋体小四，英文使用Times New Roman小四
   \item 页眉页脚使用五号字
   \item caption段前6磅，段后0磅，使用五号字
@@ -19,6 +20,15 @@
   \item 对浮动体进行设置，使之排版更紧密
 \end{itemize}
 \section{内置命令}
+\par CTEX中默认使用黑体表示加粗，使用楷体表示斜体，这与Microsoft Word不同，cltart使用xeLaTex的AutoFakeBold和AutoFakeSlant加以设置，使之与Microsoft Word显示类似。如要取消此功能，即\smallblank{1}用黑体表示加粗，使用楷体表示斜体，在导言区使用\verb|\nofake|命令\footnote{详细的字体设置：\url{https://en.wikibooks.org/wiki/LaTeX/Fonts}和\url{https://github.com/wklchris/Note-by-LaTeX}}。如：
+\begin{verbatim}
+\documentclass[super,list,bibieee,myhdrone,table,math]{cltart}
+\nofake
+\begin{document}
+...
+...
+\end{document}
+\end{verbatim}
 \par 关于文档开头的命令。cltart摒弃了LaTex内置的生成标题、作者、日期等的命令。自建命令完成这些功能，这些命令可写可不写，不写则无此信息。其中，\verb|\clttitle{}|命令和\verb|\cltinfo{}|命令请注意先后顺序。
 \begin{itemize}
   \item \verb|\clttitle{}|命令，用在开头，生成标题。如果不写则无标题。
@@ -27,7 +37,7 @@
 \end{itemize}
 \par 如本文开头是这样写的：
 \begin{verbatim}
-\documentclass[super,list,bibieee,myhdrone,color,tikz,table,math]{cltart}
+\documentclass[super,list,bibieee,myhdrone,table,math]{cltart}
 \begin{document}
 \cltheading{cltart使用说明by\ cltian}
 \clttitle{cltart使用说明}
@@ -69,7 +79,7 @@
   \item 默认——页眉为空，页脚居中为页码。
 \end{itemize}
 \section{杂项}
-\par \textbf{list}。引入verbatim，listing，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim模式，源代码和伪代码。源代码如下：
+\par \textbf{list}。引入verbatim，listings，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim，源代码和伪代码。源代码如下：
 \begin{lstlisting}[language=c++]
 typedef struct ImageData {
   ImageData() {
@@ -93,21 +103,6 @@ typedef struct ImageData {
   int32_t num_channels;
 } ImageData;
 
-typedef struct Rect {
-  int32_t x;
-  int32_t y;
-  int32_t width;
-  int32_t height;
-} Rect;
-
-typedef struct FaceInfo {
-  seeta::Rect bbox;
-  double roll;
-  double pitch;
-  double yaw;
-  double score;
-} FaceInfo;
-
   typedef struct {
     double x;
     double y;
@@ -123,7 +118,7 @@ Pascal’s rule is
 + \binom{n-1}{k-1}
 \]
 
-\par \textbf{color}。引入了xcolor包。具体使用参见\url{https://en.wikibooks.org/wiki/LaTeX/Colors}，其相当于：
+\par \textbf{color}。引入了xcolor包\footnote{具体使用参见\url{https://en.wikibooks.org/wiki/LaTeX/Colors}}。传入color参数相当于：
 \begin{verbatim}
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \end{verbatim}
@@ -145,14 +140,14 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
 \LL % last line
 }
 
-\par \textbf{nohref}。如传入nohref参数，则不使用超链接。默认使用。
+\par \textbf{nohref}。如传入nohref参数，则不使用超链接。默认使用超链接\footnote{具体参看\url{https://en.wikibooks.org/wiki/LaTeX/Hyperlinks}}。
 
 \par \textbf{geometry}。引入geomrtry包调整页面。
 
-\par \textbf{tikz}。引入tikz包绘图。
+\par \textbf{tikz}。引入tikz包绘图\footnote{使用见：\url{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}}。
 
-\par \textbf{syntaxonly}。引入syntonly包，进行语法检查且不生成pdf文件（往往这样会生成文件更快），此选项比较适合于确认文档有无语法错误。
+\par \textbf{syntaxonly}。引入syntonly包，进行语法检查且不生成pdf文件（往往这样会更快编译），此选项比较适合于确认文档有无语法错误。
 
-\par \textbf{图片}。默认导入graphicx，subcaption，bicaption包，并进行了图片样式的调整。详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}。
+\par \textbf{图片}。默认导入graphicx，subcaption，bicaption包，并进行了图片样式的调整\footnote{详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}。}。
 \bibliography{bib/ref}
 \end{document}

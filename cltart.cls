@@ -13,11 +13,10 @@
 %---------------------------------------------------------------------------%
 \NeedsTeXFormat{LaTeX2e}%
 \ProvidesClass{cltart}[2018/05/01 v1.0 LaTeX document class]%
-\LoadClass[UTF8,a4paper,oneside,zihao=-4]{ctexart}
+
 %---------------------------------------------------------------------------%
 %->> Declare options
 %---------------------------------------------------------------------------%
-%-
 %-
 %-> Citation and reference style
 %-
@@ -164,6 +163,17 @@
 %---------------------------------------------------------------------------%
 %->> Process options
 %---------------------------------------------------------------------------%
+%-
+%-> font family
+%-
+\LoadClass[UTF8,a4paper,oneside,zihao=-4]{ctexart}
+\RequirePackage{fontspec}
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SimSun}%
+\setCJKsansfont[AutoFakeBold]{SimHei}%
+\setCJKmonofont{FangSong}%
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
 %-
 %-> Math packages
 %-
@@ -434,9 +444,7 @@
 \RequirePackage{setspace} %设置行间距
 \onehalfspacing
 \raggedbottom% prevent adding vertical white space in strange places
-\CJKfamily{zhsong}
-\setmainfont{Times New Roman}
-
+%
 %- default pagestyle is page number at bottom without headers and footers
 %-
 %-
@@ -450,7 +458,7 @@
 %- section
 \ctexset {
     section = {
-        format = \linespread{1.0}\zihao{-4}\bfseries \heiti \raggedright,
+        format = \linespread{1.0}\zihao{-4}\bfseries \sffamily \raggedright,
         aftername = \quad,
         beforeskip = {24pt},
         afterskip = {6pt},
@@ -459,7 +467,7 @@
 %- subsection
 \ctexset {
     subsection = {
-        format = \linespread{1.0}\zihao{-4} \bfseries \heiti\raggedright,
+        format = \linespread{1.0}\zihao{-4} \bfseries \sffamily\raggedright,
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
@@ -468,7 +476,7 @@
 %- subsubsection
 \ctexset {
     subsubsection = {
-        format = \linespread{1.0}\zihao{-4}\bfseries \heiti\raggedright,
+        format = \linespread{1.0}\zihao{-4}\bfseries \sffamily\raggedright,
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
@@ -479,9 +487,9 @@
 %---------------------------------------------------------------------------%
 %- define chinese keywords
 \newcommand{\clttitle}[1]{%
-               \begin{center}\zihao{3}\textbf{\heiti #1}\end{center}}
+               \begin{center}\zihao{3}\textbf{\sffamily #1}\end{center}}
 \newcommand{\cltinfo}[1]{%
-               \begin{center}\zihao{5}\textbf{\heiti #1}\end{center}}  
+               \begin{center}\zihao{5}\textbf{\sffamily #1}\end{center}}  
 \newcommand{\cltheading}[1]{%
                \def\tarticle@value@headings {#1}}  
 \RequirePackage{pgffor}              
@@ -495,3 +503,12 @@
                \foreach \n in {1,...,#1}{\vfill \clearpage \mbox{} \clearpage}}
 \newcommand{\nextpage}{%
                \vfill \clearpage}
+\newcommand{\nofake}{
+	\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi]{SimSun}%
+    \setCJKsansfont{SimHei}%
+    \setCJKmonofont{FangSong}%
+    \setmainfont{Times New Roman}
+    \setmainfont{Times New Roman}
+	\setsansfont{Arial}
+	\setmonofont{Courier New}
+}
