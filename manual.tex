@@ -55,11 +55,11 @@
   \item super：上标 [1]
   \item authoryear：(Jones, 1995)
 \end{itemize}
-\par 引用使用\verb|\cite{}|，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\verb|\citens{}|，\citens{tian2017deep,yuan2018auxiliary}
+\par 引用使用\verb|\cite{}|，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\verb|\citens{}|，例如\smallblank{1}如文献\citens{tian2017deep,yuan2018auxiliary}
 \subsection{参考文献格式}
 \par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
 \section{页眉页脚}\label{sec3}
-我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
+采用fancyhdr包，我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
 \begin{itemize}
   \item myhdrone——必须设置\verb|\cltheading{}|，页眉左侧为\verb|\cltheading{}|的内容，右侧为页码。
   \item myhdrtwo——必须设置\verb|\cltheading{}|，页眉居中为\verb|\cltheading{}|的内容，页脚居中为页码。
@@ -114,7 +114,7 @@ typedef struct FaceInfo {
   } FacialLandmark;
 }
 \end{lstlisting}
-\par \textbf{math}。引入了amsmath，mathtools，amsfonts，方便高级数学公式书写。例如：
+\par \textbf{math}。引入了amsmath，mathtools，amsfonts，amssymb方便高级数学公式书写。例如：
 \nextline{1}
 
 Pascal’s rule is
