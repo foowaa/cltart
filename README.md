@@ -19,7 +19,7 @@ The author is cltian (email: tianchunlin123@gmail.com).
 
 1. 本模板强烈建议使用texlive 2014或以上版本。***请不要使用CTEX***。
 
-2. 确保当前系统已安装配置SimSun，SimHei，KaiTi，FangSong字体，如果您使用的是Linux和Mac OSX系统，请自行
+2. 确保当前系统已安装配置SimSun，SimHei，Times New Roman字体，如果您使用的是Linux和Mac OSX系统，请自行
 以“fc-cache 添加 win 字体”为关键字通过Google搜索解决方案)。
 
 3. 您可以使用各种编辑器环境，但是要确保使用XeLatex方式进行编译。
