@@ -3,14 +3,14 @@
 What's it?
 ==========
 
-cltart is a LaTeX documentclass for Chinese article writting in order to
+**cltart** is a LaTeX documentclass for Chinese article writting in order to
 make it easy to write and good to look.
 
-cltart是一个LaTex文档类，用于中文文章书写。其目的是简化书写过程和让文档外观更适于中文环境。
+**cltart**是一个LaTex文档类，用于中文文章书写。其目的是简化书写过程和让文档外观更适于中文环境。
 
 版权须知
 ========
-cltart obeys MIT License. Free to use!!
+**cltart** obeys MIT License. Free to use!!
 
 The author is cltian (email: tianchunlin123@gmail.com).
 
