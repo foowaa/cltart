@@ -44,13 +44,6 @@
      \tarticle@bibieeetrue
 }
 %-
-%-> Page layout reconfiguration
-%-
-\newif\iftarticle@geometry \tarticle@geometryfalse
-\DeclareOption{geometry}{%
-    \tarticle@geometrytrue
-}
-%-
 %-> Header and footer
 %-
 \newif\iftarticle@myhdrone \tarticle@myhdronefalse
@@ -101,6 +94,13 @@
 \newif\iftarticle@color \tarticle@colorfalse
 \DeclareOption{color}{%
     \tarticle@colortrue
+}
+%-
+%-> figure support
+%-
+\newif\iftarticle@figure \tarticle@figurefalse
+\DeclareOption{figure}{%
+    \tarticle@figuretrue
 }
 %-
 %-> Complex diagrams support
@@ -241,29 +241,32 @@
 %-
 %-> Figure environment support
 %-
-\RequirePackage{graphicx}% packages for including graphics
-\RequirePackage{caption}
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{0pt}
-\captionsetup{font={footnotesize,bf}}
-\RequirePackage[font={footnotesize,bf}]{subcaption}% package for subfigures
 
-\RequirePackage[list=off]{bicaption}% package for binary captions
-\captionsetup[figure][bi-first]{format=hang,hangindent=-0.5em}%
-\captionsetup[figure][bi-second]{format=hang,hangindent=-2em,name=Figure}%
-\captionsetup[table][bi-first]{format=hang,hangindent=-0.5em}%
-\captionsetup[table][bi-second]{format=hang,hangindent=-2em,name=Table}%
-\RequirePackage[section]{placeins}% prevent floats from being moved over section
-\RequirePackage{overpic} %图上标记
-\RequirePackage{float} %禁止浮动
-
-%-
-%-> Page layout and spacing
-%-
-\iftarticle@geometry% enable geometry to redefine page layout
-    \RequirePackage{geometry}% page layout
-    %\RequirePackage{setspace}% line spacing
+\iftarticle@figure
+    \RequirePackage{graphicx}% packages for including graphics
+    \RequirePackage{caption}
+    \setlength{\abovecaptionskip}{6pt}
+    \setlength{\belowcaptionskip}{0pt}
+    \captionsetup{font={footnotesize,bf}}
+    \RequirePackage[font={footnotesize,bf}]{subcaption}% package for subfigures
+    \RequirePackage[list=off]{bicaption}% package for binary captions
+    \captionsetup[figure][bi-first]{format=hang,hangindent=-0.5em}%
+    \captionsetup[figure][bi-second]{format=hang,hangindent=-2em,name=Figure}%
+    \captionsetup[table][bi-first]{format=hang,hangindent=-0.5em}%
+    \captionsetup[table][bi-second]{format=hang,hangindent=-2em,name=Table}%
+    \RequirePackage[section]{placeins}% prevent floats from being moved over section
+    \RequirePackage{overpic} %图上标记
+    \RequirePackage{float} %禁止浮动
+\else
+    \RequirePackage{graphicx}% packages for including graphics
+    \RequirePackage{caption}
+    \setlength{\abovecaptionskip}{6pt}
+    \setlength{\belowcaptionskip}{0pt}
+    \captionsetup{font={footnotesize,bf}}
 \fi
+%-
+%-
+\RequirePackage{geometry}% page layout
 %-
 %-> Color
 %-
