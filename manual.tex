@@ -1,4 +1,5 @@
 \documentclass[super,list,bibieee,myhdrone,table,math,chars]{cltart}
+\graphicspath{{img/}}   % 设置图片所存放的目录
 %\nofake
 \begin{document}
 \cltheading{cltart使用说明by\ cltian }
@@ -123,7 +124,7 @@ Pascal’s rule is
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \end{verbatim}
 
-\par \textbf{table}。引入了ctable，longtable，multirow包，方便进行复杂表格设计。例子如表-\ref{table1}。
+\par \textbf{table}。引入了ctable，longtable，multirow，booktabs包，方便进行复杂表格设计。例子如表-\ref{table1}。
 
 \ctable[cap = {TABLE CAPTION},caption = {例子}, label={table1}]{cc}
 {
@@ -174,7 +175,7 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
     \caption{罗马帝国帝王}\label{fig:roman}
 \end{figure}
 
-\par \textbf{图片}。默认导入graphicx，subcaption，bicaption包，并进行了图片样式的调整，可以使用子图和双语图。\footnote{详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}。
+\par \textbf{图片}。默认导入graphicx，subcaption，bicaption，float包，并进行了图片样式的调整，可以使用子图和双语图。\footnote{详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}。
 
 
 

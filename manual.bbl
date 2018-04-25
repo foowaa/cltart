@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{tian2017deep}
+C.~Tian, Y.~Yuan, and X.~Lu,
+\newblock ``Deep temporal architecture for audiovisual speech recognition,''
+\newblock in {\em CCF Chinese Conference on Computer Vision}. Springer, 2017,
+  pp. 650--661.
+
+\bibitem{yuan2018auxiliary}
+Y.~Yuan, C.~Tian, and X.~Lu,
+\newblock ``Auxiliary loss multimodal gru model in audio-visual speech
+  recognition,''
+\newblock {\em IEEE Access}, vol. 6, pp. 5573--5583, 2018.
+
+\end{thebibliography}
