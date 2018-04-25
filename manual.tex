@@ -20,8 +20,8 @@
   \item 参考文献提供GBT-7714和IEEE Trans格式，有中文建议使用GBT-7714格式。文档使用五号字，1.5倍行距
   \item 对浮动体进行设置，使之排版更紧密
 \end{itemize}
-\section{内置命令}
-\par CTEX中默认使用黑体表示加粗，使用楷体表示斜体，这与Microsoft Word不同，cltart使用xeLaTex的AutoFakeBold和AutoFakeSlant加以设置，使之与Microsoft Word显示类似。如要取消此功能，即\smallblank{1}用黑体表示加粗，使用楷体表示斜体，在导言区使用\verb|\nofake|命令\footnote{详细的字体设置：\url{https://en.wikibooks.org/wiki/LaTeX/Fonts}和\url{https://github.com/wklchris/Note-by-LaTeX}}。如：
+\section{预定义命令和环境}
+\par CTEX中默认使用黑体表示加粗，使用楷体表示斜体，这与Microsoft Word不同，cltart使用xeLaTex的AutoFakeBold和AutoFakeSlant加以设置，使之与Microsoft Word显示类似。如要取消此功能，即\smallblank{1}用黑体表示加粗，使用楷体表示斜体，在导言区使用\textbackslash nofake命令\footnote{详细的字体设置：\url{https://en.wikibooks.org/wiki/LaTeX/Fonts}和\url{https://github.com/wklchris/Note-by-LaTeX}}。如：
 \begin{verbatim}
 \documentclass[super,list,bibieee,myhdrone,table,math]{cltart}
 \nofake
@@ -30,11 +30,14 @@
 ...
 \end{document}
 \end{verbatim}
-\par 关于文档开头的命令。cltart摒弃了LaTex内置的生成标题、作者、日期等的命令。自建命令完成这些功能，这些命令可写可不写，不写则无此信息。其中，\verb|\clttitle{}|命令和\verb|\cltinfo{}|命令请注意先后顺序。
+
+\blankline{1}
+
+\par 关于文档开头的命令。cltart摒弃了LaTex内置的生成标题、作者、日期等的命令。自建命令完成这些功能，这些命令可写可不写，不写则无此信息。其中，\textbackslash clttitle{}命令和\textbackslash cltinfo{}命令请注意先后顺序。
 \begin{itemize}
-  \item \verb|\clttitle{}|命令，用在开头，生成标题。如果不写则无标题。
-  \item \verb|\cltinfo{}|命令，用在开头，生成相关信息（如作者，联系方式，日期等）。如果不写则无信息。
-  \item \verb|\cltheading{}|命令，用在开头，如传入myhdrone, myhdrtwo，则必须设置，其为页眉信息。请参看节-\ref{sec3}。
+  \item \textbackslash clttitle{}命令，用在开头，生成标题。如果不写则无标题。
+  \item \textbackslash cltinfo{}命令，用在开头，生成相关信息（如作者，联系方式，日期等）。如果不写则无信息。
+  \item \textbackslash cltheading{}命令，用在开头，如传入myhdrone, myhdrtwo，则必须设置，其为页眉信息。请参看节-\ref{sec3}。
 \end{itemize}
 \par 如本文开头是这样写的：
 \begin{verbatim}
@@ -47,14 +50,30 @@
 ...
 \end{document}
 \end{verbatim}
+
+\blankline{1}
+
 \par 便捷的空格、换行、换页命令：
 \begin{itemize}
-  \item \verb|\smallblank{}|，可传入参数N，会生成N个1/3em的空格。
-  \item \verb|\bigblank{}|，可传入参数N，会生成N个1em的空格。
-  \item \verb|\nextline{}|，可传入参数N，会生换行N次。
-  \item \verb|\blankpage{}|，可传入参数N，另起一页，并生成N个空白页。
-  \item \verb|\nextpage|，无参数，另起一页。
+  \item \textbackslash smallblank{}，可传入参数N，会生成N个1/3em的空格。
+  \item \textbackslash bigblank{}，可传入参数N，会生成N个1em的空格。
+  \item \textbackslash nextline{}，可传入参数N，会生换行N次，换行之后文字不缩进。（适用于文字之间）
+  \item \textbackslash nextlineindent{}，可传入参数N，会生换行N次，换行之后文字缩进。（适用于文字之间）
+  \item \textbackslash blankline{}，可传入参数N，会产生N个空白行。（适用于不同元素之间）
+  \item \textbackslash blankpage{}，可传入参数N，另起一页，并生成N个空白页。
+  \item \textbackslash nextpage，无参数，另起一页。
 \end{itemize}
+
+\blankline{1}
+
+\par 在传入list参数后，可以使用预设的文字带颜色框。\textbackslash boxone\boxone{这是boxone}，\textbackslash boxtwo\boxtwo{这是boxtwo}，\textbackslash boxthree \boxthree{这是boxthree}\footnote{更多的定义方法参见tcolorbox包}。
+
+\blankline{1}
+\par 预定义\textbackslash famousqoute{}{}命令，此命令有2个参数，其中第一个参数表示名人的姓名，第二个参数表示出处。例如：
+\nextpage
+\begin{famousquote}{陶渊明}{《归去来兮辞》}
+归去来兮，田园将芜胡不归。既自以心为形役，奚惆怅而独悲。悟已往之不谏，知来者之可追。识迷途其未远，觉今是而昨非。
+\end{famousquote}
 \section{参考文献选项}
 \par 如果要使用参考文献，请\textbf{务必}传入参数<numbers|super|authoryar>，如要使用IEEE Trans参考文献格式，使用参数bibieee，否则默认使用GBT-7714。传递参数方法如下，之后不再赘述。
 \begin{verbatim}
@@ -66,21 +85,21 @@
   \item super：上标 [1]
   \item authoryear：(Jones, 1995)
 \end{itemize}
-\par 引用使用\verb|\cite{}|，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\verb|\citens{}|，例如\smallblank{1}如文献\citens{tian2017deep,yuan2018auxiliary}
+\par 引用使用\textbackslash cite{}，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\textbackslash citens{}，例如\smallblank{1}如文献\citens{tian2017deep,yuan2018auxiliary}
 \subsection{参考文献格式}
 \par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
 \section{页眉页脚}\label{sec3}
 采用fancyhdr包，我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
 \begin{itemize}
-  \item myhdrone——必须设置\verb|\cltheading{}|，页眉左侧为\verb|\cltheading{}|的内容，右侧为页码。
-  \item myhdrtwo——必须设置\verb|\cltheading{}|，页眉居中为\verb|\cltheading{}|的内容，页脚居中为页码。
+  \item myhdrone——必须设置\textbackslash cltheading{}，页眉左侧为\textbackslash cltheading{}的内容，右侧为页码。
+  \item myhdrtwo——必须设置\textbackslash cltheading{}，页眉居中为\textbackslash cltheading{}的内容，页脚居中为页码。
   \item myhdrthree——页眉左侧为章节号和章节标题，右侧为页码。
   \item myhdrfour——页眉居中为章节号和章节标题，页脚居中为页码。
   \item myhdrfive——页眉页脚为空。
   \item 默认——页眉为空，页脚居中为页码。
 \end{itemize}
 \section{杂项}
-\par \textbf{list}。引入verbatim，listings，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim，源代码和伪代码。源代码如下：
+\par \textbf{list}。引入verbatim，listings，tcolorbox，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim，源代码和伪代码。源代码如下：
 \begin{lstlisting}[language=c++]
 typedef struct ImageData {
   ImageData() {
@@ -108,9 +127,20 @@ typedef struct ImageData {
     double x;
     double y;
   } FacialLandmark;
+
+    uint8_t* data;
+  int32_t width;
+  int32_t height;
+  int32_t num_channels;
+} ImageData;
+
+  typedef struct {
+    double x;
+    double y;
+  } FacialLandmark;
 }
 \end{lstlisting}
-\par \textbf{math}。引入了amsmath，mathtools，amsfonts，amssymb方便高级数学公式书写。例如：
+\par \textbf{math}。引入了amsmath，mathtools，amsfonts，amssymb，mathdots，mathrsfs，yhmath，esint，extarrows包方便高级数学公式书写。例如：
 \nextline{1}
 
 Pascal’s rule is
@@ -124,7 +154,7 @@ Pascal’s rule is
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \end{verbatim}
 
-\par \textbf{table}。引入了ctable，longtable，multirow，booktabs包，方便进行复杂表格设计。例子如表-\ref{table1}。
+\par \textbf{table}。引入了ctable，longtable，multirow，array，booktabs包，方便进行复杂表格设计。例子如表-\ref{table1}。
 
 \ctable[cap = {TABLE CAPTION},caption = {例子}, label={table1}]{cc}
 {
@@ -149,7 +179,7 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
 
 \par \textbf{syntaxonly}。引入syntonly包，进行语法检查且不生成pdf文件（往往这样会更快编译），此选项比较适合于确认文档有无语法错误。
 
-\par \textbf{chars}。引入textcomp，pifont，ifsym包，以使用特殊符号\footnote{详情使用见\url{https://people.math.osu.edu/snapp.14/immerse/symbolList.pdf}}。例如30 \textcelsius{}，200 \textcentoldstyle，10000 \textyen，\ding{85}，\FilledSquareShadowC，\LongPulseLow，\textifsym{mm<DDD>mm}，\textifsym{-123.456}，\SnowCloud，\Taschenuhr，\Letter
+\par \textbf{chars}。引入textcomp，pifont，ifsym包，以使用特殊符号\footnote{详情使用见\url{https://people.math.osu.edu/snapp.14/immerse/symbolList.pdf}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Special_Characters}}。例如30 \textcelsius{}，200 \textcentoldstyle，10000 \textyen，\ding{85}，\FilledSquareShadowC，\LongPulseLow，\textifsym{mm<DDD>mm}，\textifsym{-123.456}，\SnowCloud，\Taschenuhr，\Letter
 
 \begin{figure}[htbp]
     \centering
@@ -176,6 +206,8 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
 \end{figure}
 
 \par \textbf{图片}。默认导入graphicx，subcaption，bicaption，float包，并进行了图片样式的调整，可以使用子图和双语图。\footnote{详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}。
+
+
 
 
 

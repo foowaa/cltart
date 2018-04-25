@@ -132,7 +132,6 @@
 \DeclareOption{math}{%
     \tarticle@mathtrue
 }
-
 %-
 %-> hyper link support
 %-
@@ -177,13 +176,27 @@
 \setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SimSun}%
 \setCJKsansfont[AutoFakeBold]{SimHei}%
 \setCJKmonofont{KaiTi}%
+\xeCJKsetup{CJKmath=true}
+\setCJKmathfont{KaiTi}  % 数学环境中使用楷体
 \setmainfont{Times New Roman}
 %-
 %-> Math packages
 %-
 \iftarticle@math% extra math packages
     \RequirePackage{amsmath}% math packages
-    \RequirePackage{mathtools,amsfonts,amssymb}%
+    \RequirePackage{mathdots} % 数学省略号，会重定义 dddot 和 ddddot
+    \RequirePackage{amsmath}  
+    \RequirePackage{amssymb}
+    \RequirePackage{mathrsfs} % 线性代数字体
+    \RequirePackage{yhmath} % \wideparen命令：弧AB
+    \RequirePackage{mathtools} % dcases环境，prescript命令
+    \RequirePackage{amsthm} % 定理环境
+    \theoremstyle{definition}\newtheorem{laws}{Law}[section]
+    \theoremstyle{plain}\newtheorem{ju}[laws]{Jury}
+    \theoremstyle{remark}\newtheorem*{marg}{Margaret}
+    \RequirePackage{esint} % 多重积分，需放在amsmath后
+    % 箭头与长等号
+    \RequirePackage{extarrows}
 \fi
 %-
 %-> Citations
@@ -277,7 +290,8 @@
     \RequirePackage{ctable}% imports the array, tabularx and booktabs packages
     \RequirePackage{longtable} %长表格
     \RequirePackage{multirow} %通行表格
-    \RequirePackage{booktabs} %Publication quality table
+    \RequirePackage{array}
+    \RequirePackage{booktabs} %三线表
 \fi
 %-
 %-> List structures
@@ -286,6 +300,10 @@
     \RequirePackage{verbatim}% improve verbatim environment
     \RequirePackage{etoolbox}
     \preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+    \patchcmd{\@verbatim}
+     {\verbatim@font}
+     {\verbatim@font\small}
+     {}{}
     \RequirePackage{enumitem}% configure the enumerate environment
     \setlist[enumerate]{wide=\parindent}% only indent the first line
     \setlist[itemize]{wide=\parindent}% only indent the first line
@@ -293,6 +311,7 @@
     \RequirePackage{listings}% source code
     \lstset{extendedchars=false}
     \RequirePackage{algpseudocode,algorithm,algorithmicx}% algorithm
+    \RequirePackage{tcolorbox}
 \fi
 %-
 %-> Links support
@@ -394,17 +413,16 @@
 %-> Lstings settings
 %-
 \iftarticle@list% enable enhanced list
-    \definecolor{mygreen}{rgb}{0,0.6,0}
-    \definecolor{mygray}{rgb}{0.5,0.5,0.5}
-    \definecolor{mymauve}{rgb}{0.58,0,0.82}
     \lstset{%
+        %basicstyle=\linespread{0.8},
         numberbychapter=false,% numbered sequentially or by chapter
         backgroundcolor=\color{white},% background color;
-        basicstyle=\scriptsize,% font size for code
+        basicstyle=\linespread{0.8}\small\ttfamily,% font size for code
         breakatwhitespace=false,% sets if automatic breaks should only happen at whitespace
         breaklines=true,% sets automatic line breaking
         captionpos=b,% caption-position to bottom
-        commentstyle=\color{mygreen},% comment style
+        commentstyle=\color{green!50!black},% comment style
+        columns=fullflexible,  % Avoid too sparse word spaces
         %deletekeywords={...},% delete keywords from the given language
         frame=single,% adds a frame around the code
         keepspaces=true,% keeps spaces in text for keeping indentation of code
@@ -412,7 +430,7 @@
         %otherkeywords={*,...},% add more keywords to the set
         numbers=left,% where to put the line-numbers; possible values are (none, left, right)
         numbersep=5pt,% how far the line-numbers are from the code
-        numberstyle=\tiny\color{mygray},% the style that is used for the line-numbers
+        numberstyle=\tiny\color{red!75!black},% the style that is used for the line-numbers
         rulecolor=\color{black},% if not set, the frame-color may be changed on line-breaks
         showspaces=false,% show spaces everywhere adding particular underscores;
         showstringspaces=false,% underline spaces within strings only
@@ -422,12 +440,26 @@
         tabsize=2,% sets default tabsize to 2 spaces
         title=\lstname% show the filename of files
     }
+\newtcbox{\boxone}[1][green]{on line,before upper=\ttfamily,
+  arc=0pt,outer arc=0pt,colback=#1!10!white,colframe=#1!50!black,
+  boxsep=0pt,left=1pt,right=1pt,top=1pt,bottom=1pt,
+  boxrule=0pt,bottomrule=1pt,toprule=1pt}
+\newtcbox{\boxtwo}[1][violet!70!cyan]{on line,before upper=\ttfamily,
+  arc=0pt,outer arc=0pt,colback=#1!10!white,colframe=#1!50!black,
+  boxsep=0pt,left=1pt,right=1pt,top=1pt,bottom=1pt,
+  boxrule=0pt,bottomrule=1pt,toprule=1pt}
+% pkg
+\newtcbox{\boxthree}[1][orange!70!red]{on line,before upper={\rule[-0.2ex]{0pt}{1ex}\ttfamily},
+  arc=0.8ex,colback=#1!30!white,colframe=#1!50!black,
+  boxsep=0pt,left=1.5pt,right=1.5pt,top=1pt,bottom=1pt,
+  boxrule=1pt}
 \fi
 %---------------------------------------------------------------------------%
 %->> Layout
 %---------------------------------------------------------------------------%
 \RequirePackage{indentfirst} %去除LaTex默认的section首不空格
 \setlength{\parindent}{2em}
+\RequirePackage[normalem]{ulem}% 下划线宏包
 %- part one -- horizontal widths
 %- left side width + textwidth + right side width = paperwidth
 %- binding side width + textwidth + nonbinding side width = paperwidth
@@ -511,6 +543,10 @@
                \hspace{#1em}}
 \newcommand{\nextline}[1]{%
                \foreach \n in {1,...,#1}{\newline}}
+\newcommand{\nextlineindent}[1]{%
+               \foreach \n in {1,...,#1}{\newline \indent}}  
+\newcommand{\blankline}[1]{%
+               \foreach \n in {1,...,#1}{\mbox{}}}            
 \newcommand{\blankpage}[1]{%
                \foreach \n in {1,...,#1}{\vfill \clearpage \mbox{} \clearpage}}
 \newcommand{\nextpage}{%
@@ -519,5 +555,12 @@
 	\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi]{SimSun}%
     \setCJKsansfont{SimHei}%
     \setCJKmonofont{KaiTi}%
+    \xeCJKsetup{CJKmath=true}
+    \setCJKmathfont{KaiTi}  % 数学环境中使用楷体
     \setmainfont{Times New Roman}
 }
+% famousquote
+\newenvironment{famousquote}[2]
+    {\newcommand\Qauthor{#1}\newcommand\Qref{#2}}
+    {\medskip\begin{flushright}\small ——~\Qauthor\\
+    \emph{\Qref}\end{flushright}}
