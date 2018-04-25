@@ -170,7 +170,7 @@
 %---------------------------------------------------------------------------%
 %-
 %-> font family
-%-
+%-     
 \LoadClass[UTF8,a4paper,oneside,zihao=-4]{ctexart}
 \RequirePackage{fontspec}
 \setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SimSun}%
