@@ -95,7 +95,6 @@
     \tarticle@myhdrfourfalse
     \tarticle@myhdrfivetrue
 }
-
 %-
 %-> Color support
 %-
@@ -142,6 +141,13 @@
     \tarticle@nohreftrue
 }
 %-
+%-> special chars
+%-
+\newif\iftarticle@chars \tarticle@charsfalse
+\DeclareOption{chars}{%
+    \tarticle@charstrue
+}
+%-
 %-> syntax only
 %-
 \newif\iftarticle@syntaxonly \tarticle@syntaxonlyfalse
@@ -170,10 +176,8 @@
 \RequirePackage{fontspec}
 \setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SimSun}%
 \setCJKsansfont[AutoFakeBold]{SimHei}%
-\setCJKmonofont{FangSong}%
+\setCJKmonofont{KaiTi}%
 \setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
 %-
 %-> Math packages
 %-
@@ -273,7 +277,7 @@
     \RequirePackage{ctable}% imports the array, tabularx and booktabs packages
     \RequirePackage{longtable} %长表格
     \RequirePackage{multirow} %通行表格
-
+    \RequirePackage{booktabs} %Publication quality table
 \fi
 %-
 %-> List structures
@@ -318,9 +322,17 @@
             bookmarksnumbered=true,% put section numbers in bookmarks
             %hidelinks% remove link color and border
         }
+    \RequirePackage{url} %url
 \fi
-\RequirePackage{url} %url
-\RequirePackage{textcomp} %摄氏度符号
+
+%-
+%-> include special chars packages
+%-
+\iftarticle@chars
+    \RequirePackage{textcomp} 
+    \RequirePackage{pifont} 
+    \RequirePackage[misc,clock,geometry,weather,electronic]{ifsym} 
+\fi
 %-
 %-> Page layout and spacing
 %-
@@ -458,7 +470,7 @@
 %- section
 \ctexset {
     section = {
-        format = \linespread{1.0}\zihao{-4}\bfseries \sffamily \raggedright,
+        format = \linespread{1.0}\zihao{-4}\sffamily \raggedright,
         aftername = \quad,
         beforeskip = {24pt},
         afterskip = {6pt},
@@ -467,7 +479,7 @@
 %- subsection
 \ctexset {
     subsection = {
-        format = \linespread{1.0}\zihao{-4} \bfseries \sffamily\raggedright,
+        format = \linespread{1.0}\zihao{-4} \sffamily\raggedright,
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
@@ -476,7 +488,7 @@
 %- subsubsection
 \ctexset {
     subsubsection = {
-        format = \linespread{1.0}\zihao{-4}\bfseries \sffamily\raggedright,
+        format = \linespread{1.0}\zihao{-4}\sffamily\raggedright,
         aftername = \quad,
         beforeskip = {12pt},
         afterskip = {6pt},
@@ -506,9 +518,6 @@
 \newcommand{\nofake}{
 	\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi]{SimSun}%
     \setCJKsansfont{SimHei}%
-    \setCJKmonofont{FangSong}%
+    \setCJKmonofont{KaiTi}%
     \setmainfont{Times New Roman}
-    \setmainfont{Times New Roman}
-	\setsansfont{Arial}
-	\setmonofont{Courier New}
 }
