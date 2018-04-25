@@ -54,4 +54,6 @@ The author is cltian (email: tianchunlin123@gmail.com).
 > 
 > [4] [xecjk文档](http://mirrors.ibiblio.org/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf)
 >
-> [4] [LaTex-Project](https://www.latex-project.org/)
+> [5] [LaTex-Project](https://www.latex-project.org/)
+>
+> [6] [简单粗暴LaTex](https://github.com/wklchris/Note-by-LaTeX)
