@@ -46,10 +46,12 @@ The author is cltian (email: tianchunlin123@gmail.com).
 
 资源
 =============
-> [1] [wiki book](https://en.wikibooks.org/wiki/LaTeX)
+> [1] [LaTex wiki book](https://en.wikibooks.org/wiki/LaTeX)
 >
 > [2] [The Not So Short Introduction To LaTeX (Chinese Edition)](https://github.com/CTeX-org/lshort-cn)
 >
 > [3] [ctex文档](http://mirrors.ibiblio.org/CTAN/language/chinese/ctex/ctex.pdf)
+> 
+> [4] [xecjk文档](http://mirrors.ibiblio.org/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf)
 >
 > [4] [LaTex-Project](https://www.latex-project.org/)
