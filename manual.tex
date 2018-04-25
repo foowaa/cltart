@@ -150,8 +150,33 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
 
 \par \textbf{chars}。引入textcomp，pifont，ifsym包，以使用特殊符号\footnote{详情使用见\url{https://people.math.osu.edu/snapp.14/immerse/symbolList.pdf}}。例如30 \textcelsius{}，200 \textcentoldstyle，10000 \textyen，\ding{85}，\FilledSquareShadowC，\LongPulseLow，\textifsym{mm<DDD>mm}，\textifsym{-123.456}，\SnowCloud，\Taschenuhr，\Letter
 
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[htbp]{0.17\textwidth}
+        \includegraphics[width=\textwidth]{Hadrian.jpg}
+        \caption{Hadrian}
+        \label{fig:Hadrian}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[htbp]{0.17\textwidth}
+        \includegraphics[width=\textwidth]{Nerva.jpg}
+        \caption{Nerva}
+        \label{fig:Nerva}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[htbp]{0.17\textwidth}
+        \includegraphics[width=\textwidth]{Traianus.jpg}
+        \caption{Traianus}
+        \label{fig:Traianus}
+    \end{subfigure}
+    \caption{罗马帝国帝王}\label{fig:roman}
+\end{figure}
 
 \par \textbf{图片}。默认导入graphicx，subcaption，bicaption包，并进行了图片样式的调整，可以使用子图和双语图。\footnote{详情使用见\url{https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}。
+
+
 
 \bibliography{bib/ref}
 \end{document}
