@@ -1,4 +1,4 @@
-\documentclass[super,list,bibieee,myhdrone,table,math,chars,figure]{cltart}
+\documentclass[super,list,bibieee,myhdrone,table,math,chars,figure,precolorbox]{cltart}
 %\nofake
 \begin{document}
 \cltheading{cltart使用说明by\ cltian }
@@ -64,12 +64,8 @@
 \end{itemize}
 
 \blankline{1}
-
-\par 在传入list参数后，可以使用预设的文字带颜色框。\textbackslash boxone\boxone{这是boxone}，\textbackslash boxtwo\boxtwo{这是boxtwo}，\textbackslash boxthree \boxthree{这是boxthree}\footnote{更多的定义方法参见tcolorbox包}。
-
-\blankline{1}
 \par 预定义\textbackslash famousqoute{}{}环境，此环境有2个参数，其中第一个参数表示名人的姓名，第二个参数表示出处。例如：
-\nextpage
+
 \begin{famousquote}{陶渊明}{《归去来兮辞》}
 归去来兮，田园将芜胡不归。既自以心为形役，奚惆怅而独悲。悟已往之不谏，知来者之可追。识迷途其未远，觉今是而昨非。
 \end{famousquote}
@@ -86,7 +82,7 @@
 \end{itemize}
 \par 引用使用\textbackslash cite{}，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\textbackslash citens{}，例如\smallblank{1}如文献\citens{tian2017deep,yuan2018auxiliary}
 \subsection{参考文献格式}
-\par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
+\par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。cltart对IEEEbib.bst做了一些更改，使之可以产生和IEEE Trans上一样的参考文献格式而不必引入IEEETrans.cls。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
 \section{页眉页脚}\label{sec3}
 采用fancyhdr包，我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
 \begin{itemize}
@@ -97,9 +93,9 @@
   \item myhdrfive——页眉页脚为空。
   \item 默认——页眉为空，页脚居中为页码。
 \end{itemize}
-\section{杂项}
-\par \textbf{list}。引入verbatim，listings，tcolorbox，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim，源代码和伪代码。源代码如下：
-\begin{lstlisting}[language=c++]
+\section{list参数}
+\par 引入verbatim，listings，tcolorbox，salgpseudocode，algorithm，algorithmicx包，并进行了一些配置，可以支持verbatim，源代码和伪代码。此外针对lstlistings中没有Javascript支持的问题，cltart已添加支持，名称为``JS''。效果如下：
+\begin{lstlisting}[language=C++]
 typedef struct ImageData {
   ImageData() {
     data = nullptr;
@@ -139,6 +135,115 @@ typedef struct ImageData {
   } FacialLandmark;
 }
 \end{lstlisting}
+\par 在传入list参数后，可以继续传入``\textbf{precolorbox}''参数（注意：在传入list参数下，才能传入此参数）以使用预设的颜色框\footnote{tcolorbox的详细使用见\url{https://mirror.hmc.edu/ctan/macros/latex/contrib/tcolorbox/tcolorbox.pdf}}。预设的框体主要有4种：
+\begin{itemize}
+  \item 文字框。
+  \item 带标题的可分页句段框。
+  \item 无标题的可分页句段框。
+  \item 代码框。
+\end{itemize}
+\par 文字框预设的样式有2种，颜色有5种，所以共有10种框。示例如下：
+\par \textbackslash boxonegreen\boxonegreen{这是boxonegreen}，\textbackslash boxoneviolet\boxoneviolet{这是boxoneviolet}，\textbackslash boxonered\nextline{1}\boxonered{这是boxonered}，\textbackslash boxoneyellow \boxoneyellow{这是boxoneyellow}，\textbackslash boxoneblue\boxoneblue{这是boxoneblue}，\textbackslash boxtwogreen \boxtwogreen {这是boxtwogreen}，\textbackslash boxtwoviolet \boxtwoviolet {这是boxtwoviolet}，\textbackslash boxtwored \boxtwored {这是boxtwored}，\textbackslash boxtwoyellow \boxtwoyellow {这是boxtwoyellow}，\textbackslash boxtwoblue \boxtwoblue {这是boxtwoblue}。
+\par 带标题的可分页句段框有5种，分别为：\textbackslash parboxbluetitle，\textbackslash parboxredtitle，\textbackslash parboxyellowtitle，\textbackslash parboxgreentitle，\textbackslash parboxvoilettitle，调用格式如：
+\begin{verbatim}
+\begin{parboxyellowtitle}{标题}
+内容
+\end{parboxyellowtitle}
+\end{verbatim}
+\par 效果如下：
+\begin{parboxbluetitle}{标题}
+内容
+\end{parboxbluetitle}
+\begin{parboxredtitle}{标题}
+内容
+\end{parboxredtitle}
+\begin{parboxyellowtitle}{标题}
+内容
+\end{parboxyellowtitle}
+\begin{parboxgreentitle}{标题}
+内容
+\end{parboxgreentitle}
+\begin{parboxvoilettitle}{标题}
+内容
+\end{parboxvoilettitle}
+\par 无标题的可分页句段框有5种，分别为：\textbackslash parboxbluenotitle，\textbackslash parboxrednotitle，\textbackslash parboxyellownotitle，\textbackslash parboxgreennotitle，\textbackslash parboxvoiletnotitle，调用格式如：
+\begin{verbatim}
+\begin{parboxbluenotitle}
+内容
+\end{parboxbluenotitle}
+\end{verbatim}
+效果如下：
+\begin{parboxbluenotitle}
+内容
+\end{parboxbluenotitle}
+\begin{parboxrednotitle}
+内容
+\end{parboxrednotitle}
+\begin{parboxyellownotitle}
+内容
+\end{parboxyellownotitle}
+\begin{parboxgreennotitle}
+内容
+\end{parboxgreennotitle}
+\begin{parboxvoiletnotitle}
+内容
+\end{parboxvoiletnotitle}
+\par 在cltart中定义了各种语言的代码框，以tcb\{lstlistings\_name\}命名，定义的\{lstlistings\_name\}有Ada,Objective(即objective C), Sharp(即C\#), C, C++, Assembler, Awk, Caml, bash, Delphi, erlang, Fortran, Gnuplot, Haskell, HTML
+Lingo, Java, Scala, Lua, make, Lisp, Matlab, Mathematica, Octave, Pascal, Perl, PHP, PostScript, Prolog
+Python, Ruby, SQL, SAS, R, Tex, LaTex, VBScript, Verilog, VHDL, XML, JS，使用如下：
+\begin{verbatim}
+\begin{tcbC++}
+typedef struct ImageData {
+  ImageData() {
+    data = nullptr;
+    width = 0;
+    height = 0;
+    num_channels = 0;
+  }
+\end{tcbC++}
+\end{verbatim}
+效果如下：
+\begin{tcbC++}
+typedef struct ImageData {
+  ImageData() {
+    data = nullptr;
+    width = 0;
+    height = 0;
+    num_channels = 0;
+  }
+
+  ImageData(int32_t img_width, int32_t img_height,
+    int32_t img_num_channels = 1) {
+    data = nullptr;
+    width = img_width;
+    height = img_height;
+    num_channels = img_num_channels;
+  }
+
+  uint8_t* data;
+  int32_t width;
+  int32_t height;
+  int32_t num_channels;
+} ImageData;
+
+  typedef struct {
+    double x;
+    double y;
+  } FacialLandmark;
+
+    uint8_t* data;
+  int32_t width;
+  int32_t height;
+  int32_t num_channels;
+} ImageData;
+
+  typedef struct {
+    double x;
+    double y;
+  } FacialLandmark;
+}
+\end{tcbC++}
+\section{杂项}
 \par \textbf{math}。引入了amsmath，mathtools，amsfonts，amssymb，mathdots，mathrsfs，yhmath，esint，extarrows包方便高级数学公式书写。例如：
 \nextline{1}
 
