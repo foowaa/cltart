@@ -14,7 +14,7 @@ make it easy to write and good to look.
 ========
 **cltart** obeys MIT License. Feel free to use!!
 
-The author is cltian (email: cl.tian@live.com).
+The author is cltian (email: cl.tian@qq.com).
 
 使用须知
 ========
