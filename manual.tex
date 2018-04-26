@@ -82,7 +82,7 @@
 \end{itemize}
 \par 引用使用\textbackslash cite{}，例如\smallblank{1}如文献\cite{tian2017deep,yuan2018auxiliary}。如要在super中使用numbers，使用命令\textbackslash citens{}，例如\smallblank{1}如文献\citens{tian2017deep,yuan2018auxiliary}
 \subsection{参考文献格式}
-\par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数。cltart对IEEEbib.bst做了一些更改，使之可以产生和IEEE Trans上一样的参考文献格式而不必引入IEEETrans.cls。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
+\par 默认使用GBT-7714格式，如想使用IEEE Trans格式，请传入bibieee参数（注意，只有传入<numbers|super|authoryar>后，传入bibieee才是有效的）。cltart对IEEEbib.bst做了一些更改，使之可以产生和IEEE Trans上一样的参考文献格式而不必引入IEEETrans.cls。注意：IEEE Trans格式比较适用于参考文献为英文论文，否则不要使用。
 \section{页眉页脚}\label{sec3}
 采用fancyhdr包，我们预定义了6种页眉页脚格式，分别为：myhdrone，myhdrtwo，myhdrthree，myhdrfour，myhdrfive和默认，不设置即为默认格式。
 \begin{itemize}
