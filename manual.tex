@@ -1,4 +1,4 @@
-\documentclass[super,list,bibieee,myhdrone,table,math,chars,figure,precolorbox]{cltart}
+\documentclass[super,list,bibieee,myhdrone,table,math,chars,figure,precolorbox,tikz]{cltart}
 %\nofake
 \begin{document}
 \cltheading{cltart使用说明by\ cltian }
@@ -281,6 +281,15 @@ COL 1\tmark[a] & COL 2\tmark[$\ast$]
 
 \par \textbf{tikz}。引入tikz包绘图\footnote{使用见：\url{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}}。
 
+\begin{tikzpicture}
+\draw[help lines, xstep=1, ystep=2] (0,0) grid (3,4);
+\draw (0,2) parabola[bend at end] (1,0);
+\draw[xshift=1cm] (0,1) parabola (1,2);
+\draw[xshift=2cm] (0,0) parabola bend (0.5,2) (1,0);
+\draw[yshift=2cm] (0,0) parabola[bend pos=0.75] bend +(0,1) (1,0);
+\draw[xshift=1cm, yshift=2cm] (0,0) -- (1,2) parabola cycle;
+\draw[xshift=2cm, yshift=2cm] (0,0) parabola[parabola height=2cm] +(1,0);
+\end{tikzpicture}
 \par \textbf{syntaxonly}。引入syntonly包，进行语法检查且不生成pdf文件（往往这样会更快编译），此选项比较适合于确认文档有无语法错误。
 
 \par \textbf{chars}。引入textcomp，pifont，ifsym包，以使用特殊符号\footnote{详情使用见\url{https://people.math.osu.edu/snapp.14/immerse/symbolList.pdf}和\nextline{1} \url{https://en.wikibooks.org/wiki/LaTeX/Special_Characters}}。例如30 \textcelsius{}，200 \textcentoldstyle，10000 \textyen，\ding{85}，\FilledSquareShadowC，\LongPulseLow，\textifsym{mm<DDD>mm}，\textifsym{-123.456}，\SnowCloud，\Taschenuhr，\Letter

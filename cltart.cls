@@ -287,10 +287,7 @@
 \iftarticle@tikz%
     \RequirePackage{tikz}% automatically load pgf package
     \usetikzlibrary{% load libraries
-        positioning,
-        arrows,
-        calc,
-        trees
+         calc,intersections,positioning,angles,quotes,decorations.pathmorphing,fit,backgrounds,through
     }%
 \fi
 %-
