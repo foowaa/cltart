@@ -319,6 +319,7 @@
     \lstset{extendedchars=false}
     \RequirePackage{algpseudocode,algorithm,algorithmicx}% algorithm
     \RequirePackage{tcolorbox}
+    \RequirePackage{lipsum}
 \fi
 %-
 %-> Links support
