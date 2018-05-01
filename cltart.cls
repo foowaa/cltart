@@ -1868,3 +1868,4 @@
     {\newcommand\Qauthor{#1}\newcommand\Qref{#2}}
     {\medskip\begin{flushright}\small ——~\Qauthor\\
     \emph{\Qref}\end{flushright}}
+    
