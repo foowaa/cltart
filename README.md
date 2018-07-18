@@ -1,6 +1,6 @@
 # cltart
 
-![](glance.jpg)
+![](glance.gif)
 
 What's it?
 ==========
